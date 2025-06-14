@@ -10,7 +10,7 @@ document.getElementById("formulario").addEventListener("submit", async function 
   };
 
   try {
-    const response = await fetch("https://contrato-backend.onrender.com/generar_poder", {
+    const response = await fetch("https://poder-simple.onrender.com/generar_poder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
