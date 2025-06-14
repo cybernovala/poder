@@ -25,7 +25,7 @@ PARA REALIZAR EL SIGUIENTE TRÁMITE: {data['tramite']}.
 
     # Fecha final
     pdf.ln(20)
-    fecha_actual = datetime.now().strftime("LOS ÁNGELES, %-d DE %B DE %Y").upper()
+    fecha_actual = datetime.now().strftime("LOS ÁNGELES, %d DE %B DE %Y").upper()
     pdf.cell(0, 10, fecha_actual, ln=True, align="R")
 
     # Guardar en buffer
