@@ -4,7 +4,9 @@ from generar_pdf import generar_pdf
 import io
 
 app = Flask(__name__)
-CORS(app)
+
+# ✅ Permitir CORS desde GitHub Pages específicamente
+CORS(app, resources={r"/*": {"origins": "https://cybernovala.github.io"}})
 
 @app.route("/generar_poder", methods=["POST"])
 def generar_poder():
