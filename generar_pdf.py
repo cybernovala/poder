@@ -6,12 +6,12 @@ import io
 def generar_pdf(data):
     pdf = FPDF()
     pdf.add_page()
-    pdf.set_font("Arial", "B", 14)
+    pdf.set_font("Helvetica", "B", 14)  # Cambiado a fuente segura
 
     pdf.set_xy(10, 20)
     pdf.cell(0, 10, "PODER SIMPLE", ln=True, align="C")
 
-    pdf.set_font("Arial", "", 14)
+    pdf.set_font("Helvetica", "", 14)  # Cambiado a fuente segura
     pdf.ln(10)
 
     texto = f"""
@@ -24,11 +24,11 @@ PARA REALIZAR EL SIGUIENTE TRÁMITE: {data['tramite']}.
         pdf.multi_cell(0, 10, line.strip())
 
     # Fecha final
-    pdf.ln(20)
     fecha_actual = datetime.now().strftime("LOS ÁNGELES, %d DE %B DE %Y").upper()
+    pdf.ln(20)
     pdf.cell(0, 10, fecha_actual, ln=True, align="R")
 
-    # Guardar en buffer
+    # Guardar PDF en memoria
     buffer = io.BytesIO()
     pdf.output(buffer)
     buffer.seek(0)
