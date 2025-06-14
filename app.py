@@ -8,14 +8,21 @@ CORS(app)
 
 @app.route("/generar_poder", methods=["POST"])
 def generar_poder():
-    data = request.get_json()
-    pdf_bytes = generar_pdf(data)
-    return send_file(
-        io.BytesIO(pdf_bytes),
-        download_name="poder_simple.pdf",
-        as_attachment=True,
-        mimetype="application/pdf"
-    )
+    try:
+        data = request.get_json()
+        print("🔍 Datos recibidos:", data)
+
+        pdf_bytes = generar_pdf(data)
+
+        return send_file(
+            io.BytesIO(pdf_bytes),
+            download_name="poder_simple.pdf",
+            as_attachment=True,
+            mimetype="application/pdf"
+        )
+    except Exception as e:
+        print("❌ Error al generar el PDF:", str(e))
+        return {"error": "Fallo interno al generar el PDF"}, 500
 
 if __name__ == "__main__":
     app.run()
