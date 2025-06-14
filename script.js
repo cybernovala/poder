@@ -13,10 +13,8 @@ document.getElementById("formulario").addEventListener("submit", async function 
   try {
     const response = await fetch("https://poder-simple.onrender.com/generar_poder", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
     });
 
     if (!response.ok) throw new Error("Error al generar PDF");
