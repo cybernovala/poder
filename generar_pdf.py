@@ -15,24 +15,27 @@ def generar_pdf(data):
     pdf.ln(10)
 
     texto = f"""
-YO, {data['autorizador']}, RUT {data['rut_autorizador']}, 
-AUTORIZO A {data['autorizado']}, RUT {data['rut_autorizado']}, 
+YO, {data['autorizador']}, RUT {data['rut_autorizador']},
+AUTORIZO A {data['autorizado']}, RUT {data['rut_autorizado']},
 PARA REALIZAR EL SIGUIENTE TRÁMITE: {data['tramite']}.
 """
 
     for line in texto.strip().split('\n'):
         pdf.multi_cell(0, 10, line.strip())
 
-    # Fecha final
     pdf.ln(20)
-    fecha_actual = datetime.now().strftime("LOS ÁNGELES, %-d DE %B DE %Y").upper()
+
+    try:
+        fecha_actual = datetime.now().strftime("LOS ÁNGELES, %d DE %B DE %Y").upper()
+    except:
+        fecha_actual = "LOS ÁNGELES, FECHA DESCONOCIDA"
+
     pdf.cell(0, 10, fecha_actual, ln=True, align="R")
 
-    # Guardar PDF en bytes
+    # Exportar como string y codificar a bytes
     pdf_bytes = pdf.output(dest="S").encode("latin1")
     buffer = io.BytesIO(pdf_bytes)
 
-    # Aplicar contraseña con PyPDF2
     reader = PdfReader(buffer)
     writer = PdfWriter()
     for page in reader.pages:
