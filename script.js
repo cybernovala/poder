@@ -6,7 +6,8 @@ document.getElementById("formulario").addEventListener("submit", async function 
     rut_autorizador: document.getElementById("rut_autorizador").value,
     autorizado: document.getElementById("autorizado").value.toUpperCase(),
     rut_autorizado: document.getElementById("rut_autorizado").value,
-    tramite: document.getElementById("tramite").value.toUpperCase()
+    tramite: document.getElementById("tramite").value.toUpperCase(),
+    fecha: document.getElementById("fecha").value.toUpperCase()
   };
 
   try {
