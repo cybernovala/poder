@@ -16,7 +16,7 @@ def generar_poder():
 
         return send_file(
             io.BytesIO(pdf_bytes),
-            download_name="poder_simple.pdf",
+            download_name="poder_simple_cybernova.pdf",
             as_attachment=True,
             mimetype="application/pdf"
         )
