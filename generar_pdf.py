@@ -16,8 +16,8 @@ def generar_pdf(data):
     pdf.ln(10)
 
     texto = (
-        f"Yo, {data['autorizador']}, RUT {data['rut_autorizador']}, autorizo a "
-        f"{data['autorizado']}, RUT {data['rut_autorizado']}, para realizar el siguiente trámite: "
+        f"YO, {data['autorizador']}, RUT {data['rut_autorizador']}, AUTORIZO A "
+        f"{data['autorizado']}, RUT {data['rut_autorizado']}, PARA REALIZAR EL SIGUIENTE  TRÁMITE: "
         f"{data['tramite']}."
     )
     
