@@ -25,7 +25,7 @@ document.getElementById("formulario").addEventListener("submit", async function 
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "poder_simple.pdf";
+    a.download = "poder_simple_cybernova.pdf";
     a.click();
     window.URL.revokeObjectURL(url);
   } catch (error) {
