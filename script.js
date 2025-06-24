@@ -26,8 +26,15 @@ document.getElementById("formulario").addEventListener("submit", async function 
     const a = document.createElement("a");
     a.href = url;
     a.download = "poder_simple_cybernova.pdf";
-    a.click();
-    window.URL.revokeObjectURL(url);
+
+    // Evitar que el navegador abra el PDF, solo descarga
+    setTimeout(() => {
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }, 0);
+
   } catch (error) {
     alert("Hubo un error al generar el PDF");
     console.error(error);
